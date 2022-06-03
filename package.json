@@ -1,5 +1,7 @@
 {
   "version": "0.1.0",
+  "name": "react-progress-timer",
+  "author": "wasaab",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -8,12 +10,12 @@
     "src"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test --passWithNoTests",
+    "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
@@ -29,23 +31,15 @@
       "pre-commit": "tsdx lint"
     }
   },
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
-  "name": "react-progress-timer",
-  "author": "wasaab",
   "module": "dist/react-progress-timer.esm.js",
   "size-limit": [
     {
       "path": "dist/react-progress-timer.cjs.production.min.js",
-      "limit": "10 KB"
+      "limit": "350 KB"
     },
     {
       "path": "dist/react-progress-timer.esm.js",
-      "limit": "10 KB"
+      "limit": "350 KB"
     }
   ],
   "devDependencies": {
@@ -67,5 +61,17 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.2"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.8.1",
+    "@mui/styles": "^5.8.0",
+    "tss-react": "^3.7.0"
+  },
+  "resolutions": {
+    "**/typescript": "^4.7.2",
+    "**/@typescript-eslint/eslint-plugin": "^5.27.0",
+    "**/@typescript-eslint/parser": "^5.27.0"
   }
 }
