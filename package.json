@@ -35,11 +35,11 @@
   "size-limit": [
     {
       "path": "dist/react-progress-timer.cjs.production.min.js",
-      "limit": "10 KB"
+      "limit": "350 KB"
     },
     {
       "path": "dist/react-progress-timer.esm.js",
-      "limit": "10 KB"
+      "limit": "350 KB"
     }
   ],
   "devDependencies": {

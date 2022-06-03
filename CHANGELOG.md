@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - .parcel-cache ignored by git and npm
+- size limit 10kB -> 350kB
 
 ### Fixed
 - tsdx's version of TS now matches project
