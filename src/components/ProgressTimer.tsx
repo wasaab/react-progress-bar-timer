@@ -1,8 +1,14 @@
-import { forwardRef, ForwardedRef, useEffect, useImperativeHandle, useState } from 'react';
+import { forwardRef, ForwardedRef, useEffect, useImperativeHandle } from 'react';
 import { alpha, Box, ButtonBase, Slide, Typography } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import { keyframes } from '@emotion/react';
-import ProgressTimerProps, { Direction, ProgressTimerHandle, Variant } from './ProgressTimer.types';
+import {
+  type ProgressTimerProps,
+  type ProgressTimerHandle,
+  Direction,
+  Variant
+} from './ProgressTimer.types';
+import useTimer from '../hooks';
 
 const useStyles = makeStyles()({
   root: {
@@ -72,58 +78,19 @@ const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
   showDuration = false,
   rootRounded = true,
   barRounded = false,
-  started
+  started,
+  onFinish = () => {}
 }: ProgressTimerProps, ref: ForwardedRef<ProgressTimerHandle>) => {
   const { classes: styles, cx } = useStyles();
-  const [time, setTime] = useState(duration);
-  const [timer, setTimer] = useState<ReturnType<typeof setInterval>>();
-  const isRunning = Boolean(timer && time);
-
-  /**
-   * Starts a stopped timer.
-   */
-  const startTimer = () => {
-    setTime(duration);
-
-    const timer = setInterval(() => {
-      setTime((prevTime) => {
-        const updatedTime = --prevTime;
-
-        if (!updatedTime) {
-          clearInterval(timer);
-        }
-
-        return updatedTime;
-      });
-    }, 1000);
-
-    setTimer(timer);
-  };
-
-  /**
-   * Stops a running timer.
-   */
-  const stopTimer = () => {
-    clearInterval(timer);
-    setTimer(undefined);
-  };
-
-  /**
-   * Restarts a running or finished timer.
-   */
-  const restartTimer = () => {
-    setTime(0);
-    stopTimer();
-  };
+  const { time, timer, isRunning, start, stop, restart } = useTimer({
+    duration,
+    onFinish: () => onFinish(label || buttonText)
+  });
 
   /**
    * Controls timer via functions instead of "started" prop.
    */
-  useImperativeHandle(ref, () => ({
-    start: startTimer,
-    stop: stopTimer,
-    restart: restartTimer
-  }));
+  useImperativeHandle(ref, () => ({ start, stop, restart }));
 
   /**
    * Formats the time to mm:ss.
@@ -157,16 +124,6 @@ const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
   };
 
   /**
-   * Restarts the timer if time is 0.
-   * This allows the bar to reset visually prior to restarting.
-   */
-  const handleRestart = () => {
-    if (time) { return; }
-
-    startTimer();
-  };
-
-  /**
    * Controls timer via "started" prop.
    */
   const handleStartedChange = () => {
@@ -174,23 +131,23 @@ const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
 
     if (started) {
       if (timer) {
-        restartTimer();
+        restart();
       } else {
-        startTimer();
+        start();
       }
     } else {
-      stopTimer();
+      stop();
     }
   };
 
-  useEffect(handleRestart, [timer]);
   useEffect(handleStartedChange, [started]);
 
   return (
     <ButtonBase
       className={cx(styles.root, classes.root)}
       style={{ borderRadius: getRadius(rootRounded) }}
-      onClick={timer ? stopTimer : startTimer}
+      onClick={timer ? stop : start}
+      aria-label={label}
     >
       <div
         className={cx(

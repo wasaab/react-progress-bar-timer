@@ -1,7 +1,8 @@
-export { default } from './ProgressTimer';
 export {
-  default as ProgressTimerProps,
+  default,
+  ProgressTimerProps,
   Direction,
   Variant,
   ProgressTimerHandle
-} from './ProgressTimer.types';
+} from './components';
+export { default as useTimer, UseTimerProps } from './hooks';

@@ -49,7 +49,7 @@ type ProgressTimerClasses = {
   finished: string;
 };
 
-type ProgressTimerProps = {
+export type ProgressTimerProps = {
   /** Direction the bar grows toward. */
   direction?: BarDirection;
   /** Determines if the bar fills or empties. */
@@ -76,6 +76,6 @@ type ProgressTimerProps = {
   barRounded?: boolean;
   /** Whether the timer should be started. (true = start, false = stop, null/undefined = await input). */
   started?: boolean | null;
+  /** Callback fired when the timer finishes. */
+  onFinish?: (label: string) => void;
 };
-
-export default ProgressTimerProps;
