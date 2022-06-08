@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2022-06-07
+### Added
+- onFinish callback prop
+
+### Changed
+- unique package name to allow for npm publish
+- useTimer hook extracted from ProgressTimer
+- only publishing dist to npm, not src
+- components moved to components/
+
 ## [0.2.0] - 2022-06-02
 ### Added
 - ProgressTimer, stories, and test

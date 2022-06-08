@@ -1,7 +1,12 @@
 import { Meta, Story } from '@storybook/react';
 import { Button, ButtonGroup } from '@mui/material';
 import { useRef } from 'react';
-import ProgressTimer, { Direction, ProgressTimerHandle, ProgressTimerProps, Variant } from '.';
+import ProgressTimer, {
+  type ProgressTimerProps,
+  type ProgressTimerHandle,
+  Direction,
+  Variant
+} from '.';
 
 const meta: Meta<ProgressTimerProps> = {
   title: 'Progress Timer',

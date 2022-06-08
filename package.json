@@ -1,14 +1,11 @@
 {
-  "version": "0.2.0",
-  "name": "react-progress-timer",
+  "version": "0.3.0",
+  "name": "react-progress-bar-timer",
   "author": "wasaab",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "src"
-  ],
+  "files": ["dist"],
   "engines": {
     "node": ">=14"
   },
@@ -22,9 +19,6 @@
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
-  },
-  "peerDependencies": {
-    "react": ">=16"
   },
   "husky": {
     "hooks": {
@@ -42,6 +36,17 @@
       "limit": "350 KB"
     }
   ],
+  "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.8.1",
+    "@mui/styles": "^5.8.0",
+    "tss-react": "^3.7.0"
+  },
+  "peerDependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@size-limit/preset-small-lib": "^7.0.8",
@@ -61,13 +66,6 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.2"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.9.0",
-    "@emotion/styled": "^11.8.1",
-    "@mui/material": "^5.8.1",
-    "@mui/styles": "^5.8.0",
-    "tss-react": "^3.7.0"
   },
   "resolutions": {
     "**/typescript": "^4.7.2",

@@ -1,11 +1,10 @@
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import { CacheProvider } from "@emotion/react";
+import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
-import ProgressTimer from '../src/ProgressTimer';
 import { Box, Button, ButtonGroup, FormControlLabel, Switch, ThemeProvider, Typography } from '@mui/material';
-import { ProgressTimerHandle } from '../src/ProgressTimer.types';
+import ProgressTimer, { type ProgressTimerHandle } from '../src/components';
 import darkTheme from './theme';
 
 const muiCache = createCache({
