@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2022-06-07
+### Added
+- chromatic github workflow for CI/CD
+- chromatic dep to publish storybook
+
+### Fixed
+- storybook glob
+
 ## [0.3.0] - 2022-06-07
 ### Added
 - onFinish callback prop

@@ -1,11 +1,13 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "name": "react-progress-bar-timer",
   "author": "wasaab",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">=14"
   },
@@ -58,6 +60,7 @@
     "@types/react": "^18.0.10",
     "@types/react-dom": "^18.0.5",
     "babel-loader": "^8.2.5",
+    "chromatic": "^6.5.6",
     "husky": "^8.0.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
