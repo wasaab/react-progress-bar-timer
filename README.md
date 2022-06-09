@@ -1,4 +1,26 @@
-# TSDX React w/ Storybook User Guide
+<div align="center">
+
+# react-progress-timer
+
+![Version](https://img.shields.io/npm/v/react-progress-bar-timer?logo=npm)
+![Version](https://img.shields.io/github/package-json/v/wasaab/react-progress-timer?label=master)
+![GitHub](https://img.shields.io/github/license/wasaab/react-progress-timer?logo=apache)
+![ECMAScript Version](https://img.shields.io/badge/ES-2021-blue?logo=javascript)
+
+
+A reusable React progress bar timer component.
+
+
+<img src="https://i.imgur.com/5Ktju0g.gif" style="max-width: 378px;"></img>
+
+[Demo](#demo) •
+[Tech Stack](#tech-stack) •
+[Features](#features) •
+[Installation](#installation) •
+[Configuration](#configuration) •
+[Usage](#usage)
+
+</div>
 
 **Todo: Replace readme**
 
