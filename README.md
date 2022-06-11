@@ -29,10 +29,10 @@ Customizable React progress bar with a labeled timer
 
 ## Examples
 
-+ Example Parcel App
++ [Example Parcel App](https://react-progress-bar-timer.vercel.app)
   + Control timer via functions exposed by ref or `started` prop.
+  + This can be served during [development](#example-app).
   + [source code](example/)
-  + This can be served [during development](#example-app)
 + [Halo Time](https://halo-time.vercel.app/)
   + Halo Infinite spawn timer SPA that controls started state of timers via `started` prop or by clicking a progress bar.
   + [source code](https://github.com/wasaab/halo-time)
