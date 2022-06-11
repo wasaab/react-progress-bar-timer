@@ -1,7 +1,6 @@
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
-import { createTheme } from '@mui/material';
-import { ThemeProvider } from '@mui/styles';
+import { createTheme, ThemeProvider } from '@mui/material';
 
 export const parameters = {
   actions: {

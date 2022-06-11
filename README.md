@@ -1,12 +1,12 @@
 <div align="center">
 
-# react-progress-timer
+# react-progress-bar-timer
 
 ![NPM Version](https://img.shields.io/npm/v/react-progress-bar-timer?logo=npm)
-![GitHub](https://img.shields.io/github/license/wasaab/react-progress-timer)
+![GitHub](https://img.shields.io/github/license/wasaab/react-progress-bar-timer)
 ![ECMAScript Version](https://img.shields.io/badge/ES-2021-blue?logo=javascript)
 
-A reusable React progress bar timer component.
+Customizable React progress bar with a labeled timer
 
 <img src="https://i.imgur.com/C013oxd.gif" style="max-width: 378px;"></img>
 
@@ -52,10 +52,11 @@ A reusable React progress bar timer component.
 + Click to **restart** when finished.
 + Control timer with `start()`, `stop()`, and `restart()` via a ref.
 + Control timer with `started` prop.
-+ Flashing animation upon finishing.
 + Progress bar can fill or empty to represent progress.
 + Progress bar can move left or right.
 + Configure duration in seconds.
++ Flashing animation upon finishing.
++ Slide and Shrink/Grow text animations
 + When the timer is inactive, the `label` will be replaced with `buttonText` if provided.
 + Always show timer even when inactive with `showDuration` set to `true`
 + `onFinish` callback fired when timer finishes.
@@ -93,7 +94,7 @@ npm install react-progress-bar-timer
 import ProgressTimer from 'react-progress-bar-timer';
 
 const ExampleComponent = () => (
-  <ProgressTimer label="Something" duration={60} />
+  <ProgressTimer label="Something" duration={30} />
 );
 ```
 <br />
@@ -103,21 +104,22 @@ const ExampleComponent = () => (
 
 <br />
 
-| Name         | Type                | Description                                                                                            |
-|--------------|---------------------|--------------------------------------------------------------------------------------------------------|
-| direction    | `"left" \| "right"` | Direction the bar grows toward.                                                                        |
-| variant      | `"fill" \| "empty"` | Determines if the bar fills or empties.                                                                |
-| color        | `string`            | Color of the bar; background is same with lower opacity.                                               |
-| fontColor    | `string`            | Color of the label and timer.                                                                          |
-| duration     | `number`            | Duration of the timer in seconds.                                                                      |
-| label        | `string`            | Label that describes the timer.                                                                        |
-| buttonText   | `string`            | Text displayed when timer is inactive (overrides label).                                               |
-| fontSize     | `string \| number`  | Font size of the label and timer. Use to scale progress bar size.                                      |
-| showDuration | `boolean`           | Whether the timer's duration should be shown when inactive.                                            |
-| rootRounded  | `boolean`           | Whether the progress bar's root element should be rounded.                                             |
-| barRounded   | `boolean`           | Whether the progress bar should be rounded.                                                            |
-| started      | `boolean \| null`   | Whether the timer should be started. (`true` = start, `false` = stop, `null/undefined` = await input). |
-| classes      | `object`            | Styles applied to the component (override or append to existing styles).                               |
+| Name         | Type                  | Default     | Description                                                                                                  |
+|--------------|-----------------------|-------------|--------------------------------------------------------------------------------------------------------------|
+| direction    | `"left"` \| `"right"` | `"right"`   | Direction the bar grows toward.                                                                              |
+| variant      | `"fill"` \| `"empty"` | `"fill"`    | Determines if the bar fills or empties.                                                                      |
+| color        | `string`              | `"#ffa500"` | Color of the bar; background is same with lower opacity.                                                     |
+| fontColor    | `string`              | `"#212121"` | Color of the label and timer.                                                                                |
+| duration     | `number`              | `60`        | Duration of the timer in seconds.                                                                            |
+| label        | `string`              |             | Label that describes the timer.                                                                              |
+| buttonText   | `string`              |             | Text displayed when timer is inactive (overrides label).                                                     |
+| fontSize     | `string` \| `number`  |             | Font size of the label and timer. Use to scale progress bar size.                                            |
+| showDuration | `boolean`             | `false`     | Whether the timer's duration should be shown when inactive.                                                  |
+| rootRounded  | `boolean`             | `true`      | Whether the progress bar's root element should be rounded.                                                   |
+| barRounded   | `boolean`             | `false`     | Whether the progress bar should be rounded.                                                                  |
+| started      | `boolean` \| `null`   |             | Whether the timer should be started.<br/>`true` (start) \| `false` (stop) \| `null/undefined` (await input). |
+| onFinish     | `func`                |             | Callback fired when the timer finishes.                                                                      |
+| classes      | `object`              |             | Styles applied to the component (override or append to existing styles).                                     |
 
 ## Styling
 
