@@ -3,7 +3,7 @@
 # react-progress-bar-timer
 
 ![NPM Version](https://img.shields.io/npm/v/react-progress-bar-timer?logo=npm)
-![GitHub](https://img.shields.io/github/license/wasaab/react-progress-timer)
+![GitHub](https://img.shields.io/github/license/wasaab/react-progress-bar-timer)
 ![ECMAScript Version](https://img.shields.io/badge/ES-2021-blue?logo=javascript)
 
 Customizable React progress bar with a labeled timer
@@ -110,10 +110,10 @@ const ExampleComponent = () => (
 | barRounded   | `boolean`             | `false`     | Whether the progress bar should be rounded.                                                                  |
 | buttonText   | `string`              |             | Text displayed when timer is inactive (overrides label).                                                     |
 | classes      | `object`              |             | Styles applied to the component (override or append to existing styles). [ⓘ CSS Classes](#css-classes)      |
-| color        | `string`              | `"#ffa500"` | Color of the bar; background is same with lower opacity.                                                     |
+| color        | `string`              | `"#1976d2"` | Color of the bar; background is same with lower opacity.                                                     |
 | direction    | `"left"` \| `"right"` | `"right"`   | Direction the bar grows toward.                                                                              |
 | duration     | `number`              | `60`        | Duration of the timer in seconds.                                                                            |
-| fontColor    | `string`              | `"#212121"` | Color of the label and timer.                                                                                |
+| fontColor    | `string`              |`"#ffffffd9"`| Color of the label and timer.                                                                                |
 | fontSize     | `string` \| `number`  |             | Font size of the label and timer. Progress bar scales with font size.                                        |
 | label        | `string`              |             | Label that describes the timer.                                                                              |
 | onFinish     | `func`                |             | Callback fired when the timer finishes.                                                                      |

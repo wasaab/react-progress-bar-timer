@@ -26,8 +26,8 @@ export const Custom = Template.bind({});
 Custom.args = {
   direction: Direction.Right,
   variant: Variant.Fill,
-  color: '#1976d2',
-  fontColor: 'rgba(255, 255, 255, 0.85)',
+  color: 'rgb(255, 165, 0)',
+  fontColor: '#212121',
   duration: 5,
   label: 'Label',
   buttonText: '',

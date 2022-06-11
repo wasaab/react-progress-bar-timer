@@ -1,6 +1,6 @@
 import { forwardRef, ForwardedRef, useEffect, useImperativeHandle } from 'react';
 import { alpha, Box, ButtonBase, Slide, Typography } from '@mui/material';
-import { blue, grey } from '@mui/material/colors'
+import { blue } from '@mui/material/colors';
 import { makeStyles } from 'tss-react/mui';
 import { keyframes } from '@emotion/react';
 import {
@@ -11,66 +11,73 @@ import {
 } from './ProgressTimer.types';
 import useTimer from '../hooks';
 
-const useStyles = makeStyles()({
-  root: {
-    width: '100%'
-  },
-  progressContainer: {
-    flex: 1,
-    position: 'relative',
-    overflowX: 'hidden',
-    borderRadius: 4
-  },
-  progress: {
-    zIndex: 1,
-    inset: 0,
-    position: 'absolute',
-    transformOrigin: 'left center'
-  },
-  textContainer: {
-    boxSizing: 'border-box',
-    position: 'relative',
-    height: '4em',
-    zIndex: 2,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 4,
-    margin: 8,
-    overflowY: 'hidden',
-    fontWeight: 500
-  },
-  label: {
-    lineHeight: 'normal',
-    letterSpacing: '0.0285em',
-    fontWeight: 'inherit',
-    fontSize: '0.9em',
-    transition: 'transform 300ms cubic-bezier(0, 0, 0.2, 1) 0ms'
-  },
-  time: {
-    fontWeight: 'inherit',
-    fontSize: '2em',
-    lineHeight: 1
-  },
-  finished: {
-    animation: `${keyframes`
-      0% {
-        opacity: 0.8;
-        background-color: orangered;
-      }
-      `} 1s 5`
-  }
-});
+const getRadius = (rounded: boolean) => (rounded ? 4 : 0);
+
+const useStyles = makeStyles<{ color: string, rootRounded: boolean, barRounded: boolean }>()(
+  (_theme, { color, rootRounded, barRounded }) => ({
+    root: {
+      width: '100%',
+      borderRadius: getRadius(rootRounded)
+    },
+    progressContainer: {
+      flex: 1,
+      position: 'relative',
+      overflowX: 'hidden',
+      borderRadius: getRadius(rootRounded),
+      backgroundColor: alpha(color, 0.4)
+    },
+    progress: {
+      zIndex: 1,
+      inset: 0,
+      position: 'absolute',
+      transformOrigin: 'left center',
+      backgroundColor: color,
+      borderRadius: getRadius(barRounded),
+    },
+    textContainer: {
+      boxSizing: 'border-box',
+      position: 'relative',
+      height: '4em',
+      zIndex: 2,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: 4,
+      margin: 8,
+      overflowY: 'hidden',
+      fontWeight: 500
+    },
+    label: {
+      lineHeight: 'normal',
+      letterSpacing: '0.0285em',
+      fontWeight: 'inherit',
+      fontSize: '0.9em',
+      transition: 'transform 300ms cubic-bezier(0, 0, 0.2, 1) 0ms'
+    },
+    time: {
+      fontWeight: 'inherit',
+      fontSize: '2em',
+      lineHeight: 1
+    },
+    finished: {
+      animation: `${keyframes`
+        0% {
+          opacity: 0.8;
+          background-color: orangered;
+        }
+        `} 1s 5`
+    }
+  })
+);
 
 const padTime = (num: number) => `${num}`.padStart(2, '0');
-const getRadius = (rounded: boolean) => (rounded ? 4 : 0);
 
 const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
   direction = Direction.Right,
   variant = Variant.Fill,
   color = blue[700],
-  fontColor = grey[900],
+  fontColor = '#ffffffd9',
   duration = 60,
   label = '',
   buttonText = '',
@@ -82,7 +89,7 @@ const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
   started,
   onFinish = () => {}
 }: ProgressTimerProps, ref: ForwardedRef<ProgressTimerHandle>) => {
-  const { classes: styles, cx } = useStyles(undefined, { props: { classes } });
+  const { classes: styles, cx } = useStyles({ color, rootRounded, barRounded }, { props: { classes } });
   const { time, timer, isRunning, start, stop, restart } = useTimer({
     duration,
     onFinish: () => onFinish(label || buttonText)
@@ -146,7 +153,6 @@ const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
   return (
     <ButtonBase
       className={styles.root}
-      style={{ borderRadius: getRadius(rootRounded) }}
       onClick={timer ? stop : start}
       aria-label={label}
     >
@@ -155,10 +161,6 @@ const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
           styles.progressContainer,
           { [styles.finished]: !time && variant === Variant.Empty }
         )}
-        style={{
-          borderRadius: getRadius(rootRounded),
-          backgroundColor: alpha(color, 0.4)
-        }}
       >
         <Box
           className={styles.textContainer}
@@ -193,8 +195,6 @@ const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
             { [styles.finished]: !time && variant === Variant.Fill }
           )}
           style={{
-            backgroundColor: color,
-            borderRadius: getRadius(barRounded),
             transform: buildProgressTransformation(),
             transition: timer ? `transform ${duration}s linear 0s` : undefined
           }}

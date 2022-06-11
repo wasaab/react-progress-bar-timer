@@ -25,8 +25,6 @@ const App = () => {
         <ProgressTimer
           ref={ref}
           started={started}
-          color="#1976d2"
-          fontColor="rgba(255, 255, 255, 0.85)"
           duration={5}
           label="Label"
         />
