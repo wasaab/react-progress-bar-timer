@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.4] - 2022-06-11
+### Changed
+- styles merged via useStyles instead of cx
+- default colors
+- repo name aligned with package name
+
 ## [0.3.3] - 2022-06-11
 ### Added
 - default values in usage docs
