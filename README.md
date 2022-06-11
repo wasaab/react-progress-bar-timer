@@ -2,204 +2,222 @@
 
 # react-progress-timer
 
-![Version](https://img.shields.io/npm/v/react-progress-bar-timer?logo=npm)
-![Version](https://img.shields.io/github/package-json/v/wasaab/react-progress-timer?label=master)
-![GitHub](https://img.shields.io/github/license/wasaab/react-progress-timer?logo=apache)
+![NPM Version](https://img.shields.io/npm/v/react-progress-bar-timer?logo=npm)
+![GitHub](https://img.shields.io/github/license/wasaab/react-progress-timer)
 ![ECMAScript Version](https://img.shields.io/badge/ES-2021-blue?logo=javascript)
-
 
 A reusable React progress bar timer component.
 
-
-<img src="https://i.imgur.com/5Ktju0g.gif" style="max-width: 378px;"></img>
+<img src="https://i.imgur.com/C013oxd.gif" style="max-width: 378px;"></img>
 
 [Demo](#demo) •
+[Examples](#examples) •
 [Tech Stack](#tech-stack) •
 [Features](#features) •
 [Installation](#installation) •
-[Configuration](#configuration) •
-[Usage](#usage)
+[Usage](#usage) •
+[Styling](#styling)
 
 </div>
 
-**Todo: Replace readme**
+## Demo
 
-Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
+[**ProgressTimer** Storybook Demo](https://master--62a00f3e9343d4004ada7469.chromatic.com/)
 
-> This TSDX setup is meant for developing React component libraries (not apps!) that can be published to NPM. If you’re looking to build a React-based app, you should use `create-react-app`, `razzle`, `nextjs`, `gatsby`, or `react-static`.
++ You can change the component's props via controls and see the rendered output.
++ Go to the `Docs` tab to see example usage code snippets and documentation for props of **ProgressTimer**.
 
-> If you’re new to TypeScript and React, checkout [this handy cheatsheet](https://github.com/sw-yx/react-typescript-cheatsheet/)
+## Examples
 
-## Commands
++ Example Parcel App
+  + Control timer via functions exposed by ref or `started` prop.
+  + [source code](example/)
+  + This can be served [during development](#example-app)
++ [Halo Time](https://halo-time.vercel.app/)
+  + Halo Infinite spawn timer SPA that controls started state of timers via `started` prop or by clicking a progress bar.
+  + [source code](https://github.com/wasaab/halo-time)
 
-TSDX scaffolds your new library inside `/src`, and also sets up a [Parcel-based](https://parceljs.org) playground for it inside `/example`.
+## Tech Stack
 
-The recommended workflow is to run TSDX in one terminal:
++ [React](https://reactjs.org/)
++ [Material-UI](https://material-ui.com/)
++ [react-scripts](https://www.npmjs.com/package/react-scripts)
++ [Node.js](https://nodejs.org/)
++ [Chromatic](https://www.chromatic.com/)
 
-```bash
-npm start # or yarn start
+## Features
+
++ Click to **stop** while running.
++ Click to **start** when unstarted.
++ Click to **restart** when finished.
++ Control timer with `start()`, `stop()`, and `restart()` via a ref.
++ Control timer with `started` prop.
++ Flashing animation upon finishing.
++ Progress bar can fill or empty to represent progress.
++ Progress bar can move left or right.
++ Configure duration in seconds.
++ When the timer is inactive, the `label` will be replaced with `buttonText` if provided.
++ Always show timer even when inactive with `showDuration` set to `true`
++ `onFinish` callback fired when timer finishes.
++ Customized styling with props
+  + `color`
+  + `fontColor`
+  + `fontSize`
+  + `rootRounded`
+  + `barRounded`
+  + `classes`
+
+See [Usage](#usage) and [Styling](#styling) for more info.
+
+## Installation
+
+<details>
+<summary>yarn</summary>
+
+```sh
+yarn add react-progress-bar-timer
 ```
+</details>
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
+<details>
+<summary>npm</summary>
 
-Then run either Storybook or the example playground:
+```sh
+npm install react-progress-bar-timer
+```
+</details>
+
+## Usage
+
+```jsx
+import ProgressTimer from 'react-progress-bar-timer';
+
+const ExampleComponent = () => (
+  <ProgressTimer label="Something" duration={60} />
+);
+```
+<br />
+
+[**ProgressTimer** Usage Docs](https://master--62a00f3e9343d4004ada7469.chromatic.com/?path=/docs/progress-timer--default)
++ Use the story controls to change prop values and click `Show code` to see a snippet
+
+<br />
+
+| Name         | Type                | Description                                                                                            |
+|--------------|---------------------|--------------------------------------------------------------------------------------------------------|
+| direction    | `"left" \| "right"` | Direction the bar grows toward.                                                                        |
+| variant      | `"fill" \| "empty"` | Determines if the bar fills or empties.                                                                |
+| color        | `string`            | Color of the bar; background is same with lower opacity.                                               |
+| fontColor    | `string`            | Color of the label and timer.                                                                          |
+| duration     | `number`            | Duration of the timer in seconds.                                                                      |
+| label        | `string`            | Label that describes the timer.                                                                        |
+| buttonText   | `string`            | Text displayed when timer is inactive (overrides label).                                               |
+| fontSize     | `string \| number`  | Font size of the label and timer. Use to scale progress bar size.                                      |
+| showDuration | `boolean`           | Whether the timer's duration should be shown when inactive.                                            |
+| rootRounded  | `boolean`           | Whether the progress bar's root element should be rounded.                                             |
+| barRounded   | `boolean`           | Whether the progress bar should be rounded.                                                            |
+| started      | `boolean \| null`   | Whether the timer should be started. (`true` = start, `false` = stop, `null/undefined` = await input). |
+| classes      | `object`            | Styles applied to the component (override or append to existing styles).                               |
+
+## Styling
+
++ The following classes can be used with the `classes` prop to customize the styling.
+
+### CSS Classes
+
+| Name              | Type     | Description                                   |
+|-------------------|----------|-----------------------------------------------|
+| root              | `string` | Styles applied to the root element.           |
+| progressContainer | `string` | Styles applied to the progress bar container. |
+| textContainer     | `string` | Styles applied to the text container.         |
+| progress          | `string` | Styles applied to the progress bar.           |
+| label             | `string` | Styles applied to the label.                  |
+| time              | `string` | Styles applied to the time.                   |
+
+## Development
+
+### Installing Dependencies
+
+<details>
+<summary>yarn</summary>
+
+```sh
+yarn install
+```
+</details>
+
+<details>
+<summary>npm</summary>
+
+```sh
+npm install
+```
+</details>
 
 ### Storybook
 
-Run inside another terminal:
+> Storybook can be used to demo your code changes in real time with HMR.
 
-```bash
+#### Starting Storybook
+
+<details>
+<summary>yarn</summary>
+
+```sh
 yarn storybook
 ```
+</details>
 
-This loads the stories from `./stories`.
+<details>
+<summary>npm</summary>
 
-> NOTE: Stories should reference the components as if using the library, similar to the example playground. This means importing from the root project directory. This has been aliased in the tsconfig and the storybook webpack config as a helper.
-
-### Example
-
-Then run the example inside another:
-
-```bash
-cd example
-npm i # or yarn to install dependencies
-npm start # or yarn start
+```sh
+npm storybook
 ```
+</details>
 
-The default example imports and live reloads whatever is in `/dist`, so if you are seeing an out of date component, make sure TSDX is running in watch mode like we recommend above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
+### Example App
 
-To do a one-off build, use `npm run build` or `yarn build`.
+> In addition to Storybook, you can use the example app in `example/` to test changes.
 
-To run tests, use `npm test` or `yarn test`.
+#### Watch for changes to `src/`
 
-## Configuration
+<details>
+<summary>yarn</summary>
 
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
-
-### Jest
-
-Jest tests are set up to run with `npm test` or `yarn test`.
-
-### Bundle analysis
-
-Calculates the real cost of your library using [size-limit](https://github.com/ai/size-limit) with `npm run size` and visulize it with `npm run analyze`.
-
-#### Setup Files
-
-This is the folder structure we set up for you:
-
-```txt
-/example
-  index.html
-  index.tsx       # test your component here in a demo app
-  package.json
-  tsconfig.json
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-/stories
-  Thing.stories.tsx # EDIT THIS
-/.storybook
-  main.js
-  preview.js
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
+```sh
+yarn start
 ```
+</details>
 
-#### React Testing Library
+<details>
+<summary>npm</summary>
 
-We do not set up `react-testing-library` for you yet, we welcome contributions and documentation on this.
-
-### Rollup
-
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
-
-### TypeScript
-
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
-
-## Continuous Integration
-
-### GitHub Actions
-
-Two actions are added by default:
-
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
-- `size` which comments cost comparison of your library on every pull request using [size-limit](https://github.com/ai/size-limit)
-
-## Optimizations
-
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
-
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
-
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
+```sh
+npm start
 ```
+</details>
 
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
+#### Serve Example App
 
-## Module Formats
+<details>
+<summary>yarn</summary>
 
-CJS, ESModules, and UMD module formats are supported.
-
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
-
-## Deploying the Example Playground
-
-The Playground is just a simple [Parcel](https://parceljs.org) app, you can deploy it anywhere you would normally deploy that. Here are some guidelines for **manually** deploying with the Netlify CLI (`npm i -g netlify-cli`):
-
-```bash
-cd example # if not already in the example folder
-npm run build # builds to dist
-netlify deploy # deploy the dist folder
+```sh
+cd example/
+yarn install
+yarn start
 ```
+</details>
 
-Alternatively, if you already have a git repo connected, you can set up continuous deployment with Netlify:
+<details>
+<summary>npm</summary>
 
-```bash
-netlify init
-# build command: yarn build && cd example && yarn && yarn build
-# directory to deploy: example/dist
-# pick yes for netlify.toml
+```sh
+cd example/
+npm install
+npm start
 ```
+</details>
 
-## Named Exports
-
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
-
-## Including Styles
-
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
-
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
-
-## Publishing to NPM
-
-We recommend using [np](https://github.com/sindresorhus/np).
-
-## Usage with Lerna
-
-When creating a new package with TSDX within a project set up with Lerna, you might encounter a `Cannot resolve dependency` error when trying to run the `example` project. To fix that you will need to make changes to the `package.json` file _inside the `example` directory_.
-
-The problem is that due to the nature of how dependencies are installed in Lerna projects, the aliases in the example project's `package.json` might not point to the right place, as those dependencies might have been installed in the root of your Lerna project.
-
-Change the `alias` to point to where those packages are actually installed. This depends on the directory structure of your Lerna project, so the actual path might be different from the diff below.
-
-```diff
-   "alias": {
--    "react": "../node_modules/react",
--    "react-dom": "../node_modules/react-dom"
-+    "react": "../../../node_modules/react",
-+    "react-dom": "../../../node_modules/react-dom"
-   },
-```
-
-An alternative to fixing this problem would be to remove aliases altogether and define the dependencies referenced as aliases as dev dependencies instead. [However, that might cause other problems.](https://github.com/palmerhq/tsdx/issues/64)
+> The example app will now be served locally and use HMR to live update on changes to the source code or example app.

@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.2] - 2022-06-11
+### Added
+- readme
+- git tag & npm publish github workflow
+
 ## [0.3.1] - 2022-06-07
 ### Added
 - chromatic github workflow for CI/CD
