@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.3.3] - 2022-06-11
 ### Added
 - default values in usage docs
+- deployed parcel app url in readme
 
 ### Fixed
 - chromatic build fixed for checkout@v2
