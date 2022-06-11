@@ -1,14 +1,14 @@
 {
-  "version": "0.3.3",
+  "version": "0.3.4",
   "name": "react-progress-bar-timer",
   "description": "Customizable React progress bar with a labeled timer",
   "author": "wasaab",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:wasaab/react-progress-timer.git"
+    "url": "git@github.com:wasaab/react-progress-bar-timer.git"
   },
-  "bugs": "https://github.com/wasaab/react-progress-timer/issues",
+  "bugs": "https://github.com/wasaab/react-progress-bar-timer/issues",
   "keywords": [
     "react",
     "progress",
