@@ -1,5 +1,6 @@
 import { forwardRef, ForwardedRef, useEffect, useImperativeHandle } from 'react';
 import { alpha, Box, ButtonBase, Slide, Typography } from '@mui/material';
+import { blue, grey } from '@mui/material/colors'
 import { makeStyles } from 'tss-react/mui';
 import { keyframes } from '@emotion/react';
 import {
@@ -68,8 +69,8 @@ const getRadius = (rounded: boolean) => (rounded ? 4 : 0);
 const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
   direction = Direction.Right,
   variant = Variant.Fill,
-  color = 'rgb(255, 165, 0)',
-  fontColor = '#212121',
+  color = blue[700],
+  fontColor = grey[900],
   duration = 60,
   label = '',
   buttonText = '',
@@ -81,7 +82,7 @@ const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
   started,
   onFinish = () => {}
 }: ProgressTimerProps, ref: ForwardedRef<ProgressTimerHandle>) => {
-  const { classes: styles, cx } = useStyles();
+  const { classes: styles, cx } = useStyles(undefined, { props: { classes } });
   const { time, timer, isRunning, start, stop, restart } = useTimer({
     duration,
     onFinish: () => onFinish(label || buttonText)
@@ -144,7 +145,7 @@ const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
 
   return (
     <ButtonBase
-      className={cx(styles.root, classes.root)}
+      className={styles.root}
       style={{ borderRadius: getRadius(rootRounded) }}
       onClick={timer ? stop : start}
       aria-label={label}
@@ -152,8 +153,7 @@ const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
       <div
         className={cx(
           styles.progressContainer,
-          classes.progressContainer,
-          { [cx(styles.finished, classes.finished)]: !time && variant === Variant.Empty }
+          { [styles.finished]: !time && variant === Variant.Empty }
         )}
         style={{
           borderRadius: getRadius(rootRounded),
@@ -161,13 +161,13 @@ const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
         }}
       >
         <Box
-          className={cx(styles.textContainer, classes.textContainer)}
+          className={styles.textContainer}
           fontSize={fontSize}
           color={fontColor}
         >
           {(label || (buttonText && !timer) || !time) && (
             <Typography
-              className={cx(styles.label, classes.label)}
+              className={styles.label}
               sx={{
                 transform: isRunning || showDuration ? undefined : 'scale(1.86)',
               }}
@@ -182,7 +182,7 @@ const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
             mountOnEnter
             unmountOnExit
           >
-            <Typography className={cx(styles.time, classes.time)}>
+            <Typography className={styles.time}>
               {formatTime()}
             </Typography>
           </Slide>
@@ -190,8 +190,7 @@ const ProgressTimer = forwardRef<ProgressTimerHandle, ProgressTimerProps>(({
         <span
           className={cx(
             styles.progress,
-            classes.progress,
-            { [cx(styles.finished, classes.finished)]: !time && variant === Variant.Fill }
+            { [styles.finished]: !time && variant === Variant.Fill }
           )}
           style={{
             backgroundColor: color,

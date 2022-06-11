@@ -66,7 +66,7 @@ export type ProgressTimerProps = {
   buttonText?: string;
   /** Styles applied to the component. */
   classes?: Partial<ProgressTimerClasses>;
-  /** Font size of the label and timer. Use to scale progress bar size. */
+  /** Font size of the label and timer. Progress bar scales with font size. */
   fontSize?: string | number;
   /** Whether the timer's duration should be shown when inactive. */
   showDuration?: boolean;
